@@ -1,0 +1,30 @@
+.filters {
+    background-image: url('путь-к-изображению.jpg'); /* Замените 'путь-к-изображению.jpg' на путь к вашему изображению */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px; /* Расстояние между фильтрами и контентом */
+    display: flex;
+    justify-content: center;
+}
+
+.filter-button {
+    font-family: Arial;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: calc(var(--index) * .71);
+    letter-spacing: -.02vw;
+    padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+    background-color: transparent;
+    color: #fff;
+    border-radius: 10em;
+    border: rgb(255 255 255 / .4) 3px solid;
+    outline: none;
+    cursor: pointer;
+    margin-top: calc(var(--index) * 2.5);
+    transition: background-color 0.3s ease;
+}
+
+.filter-button.active {
+    background-color: rgba(255, 0, 0, 0.2); /* Изменение цвета фона при активном состоянии */
+}

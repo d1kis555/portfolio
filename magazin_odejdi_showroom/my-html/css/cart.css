@@ -1,0 +1,64 @@
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #303030;
+    z-index: 999;
+    display: none;
+    overflow-y: scroll; /* Добавляем прокручивание для случая, если содержимое корзины слишком длинное */
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5); /* Добавляем тень для корзины */
+  }
+  .add-to-cart-button {
+    font-family: Arial;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: calc(var(--index) * .71);
+    letter-spacing: -.02vw;
+    padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+    background-color: transparent;
+    color: #fff;
+    border-radius: 10em;
+    border: rgb(255 255 255 / .4) 3px solid;
+    outline: none;
+    cursor: pointer;
+    margin-top: calc(var(--index) * 2.5);
+    transition: background-color 0.3s ease; 
+  }
+  .cart-content {
+    padding: 10px;
+  }
+  
+  .cart-close {
+    float: right;
+    cursor: pointer;
+  }
+
+  .cart-icon {
+    position: fixed;
+    bottom: 20px; /* Расстояние от нижнего края */
+    left: 20px; /* Расстояние от левого края */
+    z-index: 1000; /* Позиция над другими элементами */
+}
+
+.cart-icon img {
+    width: 200px; /* Размер изображения корзины */
+    height: 130px; /* Размер изображения корзины */
+}
+
+.clear-cart-button{
+    
+        background-color: #ff5722; /* Красный цвет */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    
+
+}
+
+.clear-cart-button:hover {
+    background-color: #414141; /* Измененный цвет при наведении */
+}

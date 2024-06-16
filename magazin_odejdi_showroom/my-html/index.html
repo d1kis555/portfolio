@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин модной одежды</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/purchase-modal.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/payment-modal.css">
+    <link rel="stylesheet" href="css/opis-modal.css">
+    <script src="js/app.js" defer></script>
+    <script src="js/scrollToProducts.js"></script>
+    <script src="js/purchase-modal.js" defer></script>
+    <script src="js/filter.js" defer></script>
+    <script src="js/rain.js"></script>
+    <script src="js/description.js"></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/payment-modal.js" defer></script>
+    <script src="js/opis-modal.js" defer></script>
+</head>
+<body>
+
+    <div class="logo" style="background-image: url(img/logo.svg);"></div>
+
+    <section class="layers">
+        <div class="layers__container">
+            <div class="layers__item layer-1" style="background-image: url(img/layer-1.jpg);"></div>
+            <div class="layers__item layer-2" style="background-image: url(img/layer-2.png);"></div>
+            <div class="layers__item layer-3">
+                <div class="hero-content">
+                    <h1>Модные вещи в стиле <span>Y2K</span></h1>
+                    <div class="hero-content__p">Из самых лучших уголков Лондона</div>
+                    <button class="button-start" onclick="scrollToProducts()">Заказать сейчас</button>
+                </div>
+            </div>
+            <div class="layers__item layer-4">
+                <canvas class="rain"></canvas>
+            </div>
+            <div class="layers__item layer-5" style="background-image: url(img/layer-5.png);"></div>
+            <div class="layers__item layer-6" style="background-image: url(img/layer-6.png);"></div>
+        </div>
+    </section>
+
+   
+
+    <section class="products no-rotate-animation" id="products" style="background-image: url(img/background.jpg);">
+        <div class="filters">
+            <button class="filter-button" data-filter="all">Все</button>
+            <button class="filter-button" data-filter="footwear">Обувь</button>
+            <button class="filter-button" data-filter="accessories">Аксессуары</button>
+            <button class="filter-button" data-filter="t-shirts">Футболки</button>
+            <button class="filter-button" data-filter="pants">Штаны</button>
+        </div>
+
+        <div class="products__container">
+            <div class="product footwear">
+                <img src="img/product-1.jpg" alt="Кроссовки Rick Owens">
+                <h2>Кроссовки Rick Owens</h2>
+                <p>10000$</p>
+                <button class="add-to-cart-button" id="product-1">Добавить в корзину</button>
+
+        
+        <!-- Контейнер для описания товара (изначально скрыт) -->
+            <div class="product-description">
+                <p>Высококачественные кроссовки Rick Owens.</p>
+                <p>Цвет: черный</p>
+                <p>Размеры: 39-45</p>
+        </div>
+                
+            </div>
+            
+            <div class="product pants">
+                <img src="img/product-2.jpg" alt="джинсы Chrome Hearts">
+                <h2>джинсы Chrome Hearts</h2>
+                <p>15000$</p>
+                <button class="add-to-cart-button" id="product-2">Добавить в корзину</button>
+                
+                <div class="product-description">
+                    <p>Стильные джинсы Chrome Hearts с потертостями.</p>
+                    <p>Цвет: синий</p>
+                    <p>Размеры: S, M, L</p>
+                    
+                </div>
+            </div>
+            
+            <div class="product accessories">
+                <img src="img/product-3.jpg" alt="Кепка New Era New">
+                <h2>Кепка New Era New</h2>
+                <p>30$</p>
+                <button class="add-to-cart-button" id="product-3">Добавить в корзину</button>
+                
+                <div class="product-description">
+                    <p>Классическая кепка New Era с логотипом.</p>
+                    <p>Цвет: черный</p>
+                    <p>Размер: Универсальный</p>
+                    
+                </div>
+            </div>
+            
+            <div class="product t-shirts">
+                <img src="img/product-4.jpg" alt="Футболка Y2K">
+                <h2>Футболка Y2K</h2>
+                <p>50$</p>
+                <button class="add-to-cart-button" id="product-4">Добавить в корзину</button>
+                
+                <div class="product-description">
+                    <p>Модная футболка в стиле Y2K.</p>
+                    <p>Цвет: белый</p>
+                    <p>Размеры: XS, S, M</p>
+                    
+                </div>
+            </div>
+            
+            <div class="product accessories">
+                <img src="img/product-5.jpeg" alt="Солнечные очки">
+                <h2>Солнечные очки</h2>
+                <p>80$</p>
+                <button class="add-to-cart-button" id="product-5">Добавить в корзину</button>
+                
+                <div class="product-description">
+                    <p>Стильные солнечные очки с защитой от УФ-лучей.</p>
+                    <p>Цвет оправы: черный</p>
+                    <p>Линзы: зеркальные</p>
+                    
+                </div>
+            </div>
+            
+            <div class="product accessories">
+                <img src="img/product-6.jpg" alt="Рюкзак">
+                <h2>Рюкзак</h2>
+                <p>120$</p>
+                <button class="add-to-cart-button" id="product-6">Добавить в корзину</button>
+                
+                <div class="product-description">
+                    <p>Прочный рюкзак для повседневной носки.</p>
+                    <p>Цвет: фиолетовый</p>
+                    <p>Объем: 20 литров</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-icon" id="cart-icon" onclick="openCart()">
+        
+        <!-- Изображение корзины в формате PNG -->
+        <img src="img/cart-logo.png" alt="Корзина">
+    </div>
+    <!-- Корзина -->
+    <div class="cart" id="cart">
+        <div class="cart-content">
+            <button class="clear-cart-button" onclick="clearCart()">Очистить корзину</button>
+            <span class="cart-close" onclick="closeCart()">&times;</span>
+            
+            <div class="cart-items" id="cart-items">
+                <!-- Пример для товара 1 -->
+                <div class="cart-item" data-product-id="product-1">
+                    <span class="cart-item-name">Кроссовки Rick Owens - $10000</span>
+                    <button class="remove-item-button" onclick="removeItem('product-1')">✖</button>
+                </div>
+                <!-- Пример для товара 2 -->
+                <div class="cart-item" data-product-id="product-2">
+                    <span class="cart-item-name">Джинсы Chrome Hearts - $15000</span>
+                    <button class="remove-item-button" onclick="removeItem('product-2')">✖</button>
+                </div>
+                <!-- Пример для товара 3 -->
+                <div class="cart-item" data-product-id="product-3">
+                    <span class="cart-item-name">Кепка New Era New - $30</span>
+                    <button class="remove-item-button" onclick="removeItem('product-3')">✖</button>
+                </div>
+                <!-- Пример для товара 4 -->
+                <div class="cart-item" data-product-id="product-4">
+                    <span class="cart-item-name">Футболка Y2K - $50</span>
+                    <button class="remove-item-button" onclick="removeItem('product-4')">✖</button>
+                </div>
+                <!-- Пример для товара 5 -->
+                <div class="cart-item" data-product-id="product-5">
+                    <span class="cart-item-name">Солнечные очки - $80</span>
+                    <button class="remove-item-button" onclick="removeItem('product-5')">✖</button>
+                </div>
+                <!-- Пример для товара 6 -->
+                <div class="cart-item" data-product-id="product-6">
+                    <span class="cart-item-name">Рюкзак - $120</span>
+                    <button class="remove-item-button" onclick="removeItem('product-6')">✖</button>
+                </div>
+            </div>
+            <p>Итого: $<span id="total-price">0</span></p>
+            <button class="checkout-button" onclick="openPaymentModal()">Оформить заказ</button>
+        </div>
+    </div>
+
+    <<div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2>Оплата заказа</h2>
+            
+            <!-- Форма оплаты -->
+            <form id="payment-form">
+                <div class="payment-methods">
+                    <label>
+                        <input type="radio" name="payment-method" value="card"> Оплата картой
+                    </label>
+                    <label>
+                        <input type="radio" name="payment-method" value="cash"> Оплата наличными
+                    </label>
+                    <label>
+                        <input type="radio" name="payment-method" value="spb"> Оплата через СПБ
+                    </label>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Адрес доставки:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="total-amount">
+                    <p>Сумма заказа: $<span id="order-total">0.00</span></p>
+                </div>
+    
+                <!-- Поля для оплаты картой (изначально скрыты) -->
+                <div class="card-payment-fields" style="display: none;">
+                    <div class="input-group">
+                        <label for="card-number">Номер карты:</label>
+                        <input type="text" id="card-number" name="card-number" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="card-expiry">Год окончания:</label>
+                        <input type="text" id="card-expiry" name="card-expiry" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="card-cvv">CVV:</label>
+                        <input type="text" id="card-cvv" name="card-cvv" required>
+                    </div>
+                </div>
+    
+                <button class="pay-button">Оплатить</button>
+            </form>
+        </div>
+    </div>
+    
+
+  
+</body>
+</html>

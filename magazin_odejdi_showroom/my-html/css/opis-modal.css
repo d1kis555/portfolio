@@ -1,0 +1,40 @@
+.description-button {
+    font-family: Arial;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: calc(var(--index) * .71);
+	letter-spacing: -.02vw;
+	padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+	background-color: transparent;
+	color: #fff;
+	border-radius: 10em;
+	border: rgb(255 255 255 / .4) 3px solid;
+	outline: none;
+	cursor: pointer;
+	margin-top: calc(var(--index) * 2.5);
+    
+    
+    
+    
+    
+    
+    
+    display: block; /* Отображение кнопки "Описание" */
+    margin: 0 auto; /* Выравнивание по центру */
+}
+
+/* Стили для контейнера кнопки "Описание" и описания товара */
+.description-container {
+    text-align: center; /* Выравнивание элементов по центру */
+}
+
+/* Стили для кнопки "Назад" (изначально скрыта) */
+.back-button {
+    background-color: #ff5722; /* Красный цвет */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
