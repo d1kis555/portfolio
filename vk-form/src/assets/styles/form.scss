@@ -1,0 +1,160 @@
+.form_container {
+  width: 600px;
+  // height: 600px;
+  @include border;
+
+  @include bg;
+  @include blockPadding;
+}
+
+.form_inputs-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25em;
+  > div {
+    width: 30%;
+  }
+}
+
+.form_container-title {
+  color: white;
+  font-size: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.title-item {
+  color: white;
+  font-size: 1em;
+  margin-bottom: 0.75em;
+}
+
+.select-form-block {
+  .select-form-block_item-form {
+    width: 100%;
+    > ul {
+      box-shadow: none;
+      @include border;
+      @include bg;
+      li {
+        color: white;
+      }
+      .Joy-selected {
+        background-color: #323232;
+      }
+      li:hover {
+        background-color: #323232;
+        background: #323232;
+      }
+    }
+  }
+  .select-form-block_select {
+    @include bg;
+
+    @include border;
+    color: white;
+
+    > div {
+      @include blockPadding;
+    }
+  }
+
+  .select-form-block_select.no-valid {
+    border-color: red;
+  }
+
+  .select-form-block_select:hover {
+    color: white;
+    @include bg;
+  }
+  svg {
+    color: white;
+  }
+}
+
+.datepicker-block {
+  width: 40%;
+  // background: red;
+  > div {
+    @include border;
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    color: white;
+    @include font;
+  }
+  svg {
+    color: white;
+  }
+}
+
+.form_time-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25em;
+
+  > p {
+    color: white;
+  }
+  .form_select-form-block {
+    width: 40%;
+  }
+  .select-form-block {
+    width: 30%;
+  }
+}
+
+.textarea-block {
+  margin-bottom: 1.25em;
+
+  width: 100%;
+  > div {
+    @include font;
+    @include border;
+    @include bg;
+    color: white;
+  }
+  > div:hover > textarea:first-child {
+    color: white;
+  }
+}
+
+.form_message-container {
+  .form_textarea-block {
+    > div:hover {
+      color: white;
+    }
+    > textarea:first-child:hover {
+      color: white;
+    }
+  }
+}
+
+.form_btn-container {
+  button {
+    @include font;
+    @include border;
+    color: white;
+    font-weight: 300;
+    transition-duration: 0.2s;
+  }
+
+  button:first-child {
+    margin-right: 10px;
+  }
+
+  button:hover {
+    background-color: white;
+    color: #222222;
+    border-color: #222222;
+  }
+}
+
+.btn_item.btn_item-sended-true {
+  background: rgb(60, 189, 0);
+}
+
+.btn_item.btn_item-sended-false {
+  background: rgb(188, 16, 16);
+}
