@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>SVEN</h1>
+            <img src="img/photos/12.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/sven>Sven</a> — керри-герой, обладающий высокой
+                 выживаемостью и уроном, а также способный быстро добывать золото. Storm Hammer запускает 
+                 в противника стальную перчатку, которая оглушает и наносит урон цели и врагам вокруг. 
+                 Это позволяет поймать и удержать врага на месте, облегчив его уничтожение. С Great 
+                 Cleave атаки Sven будут наносить часть урона противникам вокруг. Способность делает героя эффективным 
+                 против скопления вражеских юнитов, а также серьёзно ускоряет зачистку лесных лагерей крипов. 
+                 Активировав Warcry, Свен и все союзники вокруг получат дополнительную броню и скорость передвижения. 
+                 Это отличная способность, усиливающая боевой потенциал и мобильность сразу всей команды. 
+                 Ультимативная способность God's Strength при активации дарует герою огромную прибавку урона, 
+                 что делает его крайне опасным противником в лобовом столкновении. В сочетании с Great Cleave 
+                 вы получаете возможность быстро уничтожить сразу несколько целей, если они находятся рядом друг с другом, 
+                 а высокий показатель силы и баф от Warcry не даст врагу убить вас. Главная слабость Sven — 
+                 уязвимость к кайту. Компенсировать её вам помогут такие артефакты, как Blink Dagger и 
+                 Black King Bar. Первый даст возможность быстро сократить дистанцию с врагом, второй 
+                 не позволит команде противника остановить вас своими заклинаниями. Вместо Blink Dagger
+                можно купить Aghanim's Scepter. Это приобретение игнорирует основной недостаток 
+                Blink Dagger — отключение возможности перемещения при получения урона. Предмет увеличивает
+                радиус применения Storm Hammer, позволяет <a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a></div>
+            
+        </div>
+    </div>
+
+    
+</body>
+</html>

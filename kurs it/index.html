@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(600);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <img src="img/photos/icons8-dota-2-500.png" alt="Your Image" class="tournament-image">
+    <div class="wrapper">
+        <div class="items">
+            <a href="photo1.html" class="item" tabindex="1" style="background-image: url(img/photos/1.jpg)"></a>
+            <a href="photo2.html" class="item" tabindex="1" style="background-image: url(img/photos/2.jpg)"></a>
+            <a href="photo3.html" class="item" tabindex="1" style="background-image: url(img/photos/3.jpg)"></a>
+			<a href="photo4.html" class="item" tabindex="1" style="background-image: url(img/photos/4.jpg)"></a>
+			<a href="photo5.html" class="item" tabindex="1" style="background-image: url(img/photos/5.jpg)"></a>
+			<a href="photo6.html" class="item" tabindex="1" style="background-image: url(img/photos/6.jpg)"></a>
+			<a href="photo7.html" class="item" tabindex="1" style="background-image: url(img/photos/7.jpg)"></a>
+			<a href="photo8.html" class="item" tabindex="1" style="background-image: url(img/photos/8.jpg)"></a>
+			<a href="photo9.html" class="item" tabindex="1" style="background-image: url(img/photos/9.jpg)"></a>
+			<a href="photo10.html" class="item" tabindex="1" style="background-image: url(img/photos/10.jpg)"></a>
+			<a href="photo11.html" class="item" tabindex="1" style="background-image: url(img/photos/11.jpg)"></a>
+			<a href="photo12.html" class="item" tabindex="1" style="background-image: url(img/photos/12.jpg)"></a>
+			<a href="photo13.html" class="item" tabindex="1" style="background-image: url(img/photos/13.jpg)"></a>
+        </div>
+    </div>
+</body>
+</html>
+
+<div class="upcoming-tournaments">
+    <h1>Предстоящие турниры</h1>
+
+    <!-- Контейнер для четырех турниров -->
+    <div class="tournament-container">
+        <!-- Второй турнир -->
+        <div class="tournamentdream">
+            <a href="photo14.html">
+                <img src="img/photos/DREAM.png" alt="Изображение турнира 2" class="tournament-image1">
+            </a>
+            <p class="tournament-name">DreamLeague Season 22</p>
+        </div>
+
+        <!-- Третий турнир -->
+        <div class="tournament">
+            <a href="photo15.html">
+                <img src="img/photos/ESL_kuala.png" alt="Изображение турнира 3" class="tournament-image1">
+            </a>
+            <p class="tournament-name">ESL One Kuala Lumpur 2023</p>
+        </div>
+
+        <!-- Четвертый турнир -->
+        <div class="tournamentdream">
+            <a href="photo16.html">
+                <img src="img/photos/DREAM.png" alt="Изображение турнира 4" class="tournament-image1">
+            </a>
+            <p class="tournament-name">DreamLeague Season 23</p>
+        </div>
+    </div>
+</div>
+<div class="teams">
+    <h1>Команды</h1>
+<div class="teams-container">
+<div class="teamspirit">
+        <a href="teamspirit.html">
+            <img src="img/photos/teamspiritlogo.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="betboom">
+        <a href="betboom.html">
+            <img src="img/photos/betboom.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="gg">
+        <a href="gg.html">
+            <img src="img/photos/gg.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="pandas">
+        <a href="9pandas.html">
+            <img src="img/photos/9pandas.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="liquid">
+        <a href="liquid.html">
+            <img src="img/photos/liquid.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="virtuspro">
+        <a href="virtuspro.html">
+            <img src="img/photos/virtuspro.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="talon">
+        <a href="talon.html">
+            <img src="img/photos/talon.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+    <div class="lgd">
+        <a href="lgd.html">
+            <img src="img/photos/lgd.png" alt="Изображение турнира 2" class="team-image1">
+        </a>
+    </div>
+
+
+</div>
+</div>
+<!-- Ваш существующий wrapper и items -->
+<div class="wrapper">
+    <div class="items">
+        <!-- Ваши существующие items -->
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        adjustTournamentContainerHeight();
+
+        $(window).resize(function () {
+            adjustTournamentContainerHeight();
+        });
+
+        function adjustTournamentContainerHeight() {
+            var maxHeight = 0;
+
+            $(".tournament-container").each(function () {
+                var containerHeight = 0;
+
+                $(this).find(".tournament").each(function () {
+                    var imageHeight = $(this).find(".tournament-image").height();
+                    containerHeight = Math.max(containerHeight, imageHeight);
+                });
+
+                maxHeight = Math.max(maxHeight, containerHeight);
+            });
+
+            $(".tournament-container").height(maxHeight);
+        }
+    });
+</script>
+</body>
+</html>

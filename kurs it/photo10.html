@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>ARC WARDEN</h1>
+            <img src="img/photos/10.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/arcwarden>Arc Warden</a> (на сленге арк, аквариум) — 
+                герой центральной линии, способный усиливать потенциал любого предмета, а также обладающий необычным геймплеем.
+                 В зависимости от принадлежности к одной из двух сторон — Света или Тьмы, — способности Arc Warden и его клона 
+                 Tempest Double будут отличаться в принципе действия. Так, первая способность Flux 
+                 замедляет цель и наносит ей периодический урон, если рядом с ней нет её союзников, а альтернативная, 
+                 в случае если герой выступает за силы Тьмы, будет наносить больший урон, но замедлять куда слабее. 
+                 Способность полезна на линии в битве один на один с врагом, а также по игре в целом, позволяя ловить и 
+                 быстро уничтожать отколовшихся от команды противников. Заклинание Magnetic Field (Radiant)  
+                 создаёт в выбранной области магическое поле, которое игнорирует все атаки извне, а также увеличивает 
+                 скорость атаки. Если Arc Warden играет за силы Тьмы, то поле значительно увеличивает урон от атаки героям, 
+                 находящимся внутри него, и дальность атаки героев дальнего боя, однако переставая предоставлять уклонение 
+                 от атак. Эффект поля полезен против героев дальнего боя, а также при защите или штурме базы. 
+                 Использовав Spark Wraith (Radiant) Arc Warden призовёт в выбранную точку духа, который 
+                 бросится на любого врага, оказавшегося в области действия, нанося урон. Когда Arc Warden выступает за 
+                 сторону Тьмы, дух быстрее подготавливается, летит до цели и замедляет сильнее обычного, но наносит меньше 
+                 урона по сравнению с обычным. С Aghanim's Scepter при попадании духа во врага в месте 
+                 попадания создаётся новый дух, однако при повторном попадании он не реплицируется. Можно призывать сразу 
+                 несколько духов в одну точку, тем самым делая смертельные ловушки для ничего не подозревающих противников. 
+                 Ультимативная способность Tempest Double даёт возможность Арк Вардену призывать свою точную 
+                 копию, которая обладает такими же характеристиками, альтернативными способностями фракции противоположного 
+                 Древнего, а также способна использовать всё снаряжение. Ультимейт — основа геймплея за вашего героя, 
+                 позволяющая удваивать силу любого предмета и участвовать в драке, не рискуя быть убитым самому. 
+                 Благодаря уникальному взаимодействию Arc Warden с инвентарём, он может эффективно использовать 
+                 практически любой предмет. Стоит выделить Boots of Travel, что поможет вашей копии 
+                 прийти на помощь союзникам сразу после призыва, а также Hand of Midas, который из-за 
+                 двойной активации быстро окупит себя и позволит вырваться вперёд по золоту и опыту.<a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a> </div>
+           
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

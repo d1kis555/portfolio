@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>LIFESTEALER</h1>
+            <img src="img/photos/6.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/Lifestealer>Lifestealer</a> (на сленге гуля) — керри-герой, 
+                обладающий высокой выживаемостью и большим количеством самолечения. 
+                Способность Ghoul Frenzy позволяет Lifestealer сильно замедлить противника, это не даёт врагу 
+                быстро уйти от вас. Изучив Feast, Лайфстилер начнёт с каждой атакой по врагу излечивать себя. 
+                Сила лечения зависит от максимального здоровья цели, что делает героя особенно эффективным против очень 
+                живучих противников. Rage при активации дарует герою невосприимчивость к эффектам и значительное 
+                сопротивление магии, а также увеличивает его скорость передвижения. Это универсальная способность, 
+                с которой можно быстро настигнуть врага, игнорируя вражеские заклинания, развеять отрицательные эффекты, 
+                либо же безопасно покинуть драку. С последним вам поможет комбинация Rage и 
+                Town Portal Scroll — с ней Lifestealer может заходить глубоко на вражескую территорию, не боясь быть наказанным. 
+                Ультимативная способность Infest позволяет герою залезть в союзника, либо нейтрального или лайнового крипа, 
+                становясь недосягаемым для противника. Крипа можно съесть изнутри, восстановив здоровье, 
+                либо захватить контроль над ним, заставив сражаться на своей стороне. Когда Lifestealer вырывается наружу, 
+                он наносит урон всем противникам вокруг. Ультимейт даёт вам ещё больше лечения и ещё большую выживаемость, 
+                делая убийство героя невыполнимой задачей, если его способности не на перезарядке. С 
+                Aghanim's Scepter увеличится дальность применения Infest, уменьшается перезарядка, а так же позволяет 
+                Lifestealer применить способность на героев противника. Этому герою посвящена песня восходящих звёзд 2late, 44planet - stealed ur life.</div>
+                <a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a>
+        </div>
+    </div>
+
+  
+
+</body>
+</html>

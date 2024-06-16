@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>PHANTOM ASSASIN</h1>
+            <img src="img/photos/8.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/phantomassassin>Phantom Assassin</a> (на сленге фантомка, мортра) 
+                — кор-герой, предпочитающий лёгкую линию. Главная задача — фармить до появления основных предметов. 
+                В большинстве случаев сразу покупается Desolator и Black King Bar. 
+                С этими артефактами Phantom Assassin наносит большой урон в сражениях. Если ситуация в игре пассивная, 
+                то можно приобрести Battle Fury, чтобы ускорить фарм. Благодаря своим способностям 
+                Phantom Assassin может быстро зарабатывать золото и убивать вражеских героев. Stifling 
+                Dagger — кинжал, урон которого зависит от размера атаки Phantom Assassin, накладывает на цель 
+                замедление и модификации от предметов или способностей. На ранней стадии игры Stifling 
+                Dagger стоит использовать, чтобы добивать дальних крипов. Phantom Strike телепортирует героя 
+                к выбранной цели и дает бонусную скорость атаки, если это был враг. Phantom Strike позволяет 
+                быстро перемещаться между лагерями нейтральных крипов, что значительно экономит время при фарме леса. 
+                Также этой способностью можно начинать драку, прыгнув на противника, или выходить из нее, прыгнув на 
+                союзника. Blur даёт пассивный шанс уклонения, а применение делает Phantom Assassin невидимой, 
+                если рядом нет героев противника (механика умения схожа с Smoke of Deceit). 
+                Под этой способностью можно атаковать крипов, что позволяет безопаснее пушить линии и фармить лагеря древних
+                 без потерь здоровья. C Aghanim's Scepter Blur развеивает отрицательные эффекты и 
+                 получает уменьшенную перезарядку, а Phantom Assassin перезаряжает все свои способности после каждого 
+                 убийства. Coup de Grace дает Phantom Assassin шанс нанести критический урон со следующей атаки 
+                 или Stifling Dagger.
+                 <a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a>
+                </div>
+            
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

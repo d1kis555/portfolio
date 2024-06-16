@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>TECHIES</h1>
+            <img src="img/photos/11.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/techies>Techies</a> (на сленге течка, течис, технари) 
+                — герой поддержки, инициатор, предпочитающий сложную линию. Особо эффективен против героев ближнего боя. 
+                Благодаря замедлению и урону от первой способности — Sticky Bomb, которая, в случае попадания,
+                 моментально прилипает к противнику, а после наносит урон от взрыва, может в паре с оффлейнером совершать 
+                 убийства на линии с первых минут игры. Techies доставляет проблемы вражеским героям на ранней стадии игры 
+                 за счёт своего урона с атаки. Вторая способность героя — Blast Off! — позволяет прыгнуть в 
+                 противника, нанося урон по области приземления, а также накладывая безмолвие на вражеских персонажей. 
+                 Течис может совершать убийства в одиночку, комбинируя прыжок Blast Off! и ультимативную 
+                 способность Proximity Mines, наносящую огромное количество урона по области. 
+                 Заряды Proximity Mines можно сломать, однако героям ближнего боя сделать это 
+                 довольно-таки сложно. Вторая способность «минёра» — Reactive Tazer — повышает 
+                 скорость передвижения героя во время применения, а также накладывает бессилие на противников в 
+                 радиусе по окончанию. Данную способность улучшает Aghanim's Scepter, давая возможность 
+                 герою накладывать заклинание на союзников, что очень полезно в поздней стадии игры, делая персонажа 
+                 полноценным героем поддержки. Четвёртая способность героя — Minefield Sign — позволяет 
+                 поставить табличку, которая сигнализирует врагам о наличии мин в данном месте. Techies лучше всего 
+                 раскрывает свой потенциал с такими предметами, как Aghanim's Shard, Aether 
+                 Lens и Ethereal Blade.<a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a></div>
+           
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

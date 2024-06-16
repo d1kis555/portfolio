@@ -1,0 +1,271 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--index: calc(1vw + 1vh);
+	--transition: cubic-bezier(.1, .7, 0, 1);
+}
+@font-face {
+    font-family: 'TrajanPro';
+    src: url('TrajanPro3-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+	margin: 0;
+    padding: 0;
+    font-family: 'TrajanPro', 'Arial', sans-serif;
+    position: relative;
+}
+.video-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    opacity: 0.7;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+.return-button {
+	font-family: 'TrajanPro';
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #272727;
+    color: rgb(190, 190, 190);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+	border-radius: 5px;
+}
+
+.return-button:hover {
+    background-color: #4b4b4b;
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+.items {
+	display: flex;
+	gap: .4rem;
+	perspective: calc(var(--index) * 35);
+}
+.item {
+	background-color: #222;
+	width: calc(var(--index) * 3);
+	height: calc(var(--index) * 12);
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+	will-change: transform, filter;
+	filter: grayscale() brightness(.5);
+}
+.item::before, .item::after {
+	content: '';
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	right: calc(var(--index) * -1);
+}
+.item::after {
+	left: calc(var(--index) * -1);
+}
+.items .item:hover {
+	transform: translateZ(calc(var(--index) * 10));
+	filter: inherit;
+}
+
+/* Right */
+
+.items .item:hover + * {
+	transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+	filter: inherit;
+	z-index: -1;
+}
+.items .item:hover + * + * {
+	transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+	filter: inherit;
+	z-index: -2;
+}
+.items .item:hover + * + * + * {
+	transform: translateZ(calc(var(--index) * 2.4)) rotateY(30deg);
+	filter: inherit;
+	z-index: -3;
+}
+.items .item:hover + * + * + * + * {
+	transform: translateZ(calc(var(--index) * .6)) rotateY(14deg);
+	filter: inherit;
+	z-index: -4;
+}
+
+/* Left */
+
+.item:has(+ :hover) {
+	transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+	filter: inherit;
+}
+.item:has(+ * + :hover) {
+	transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+	filter: inherit;
+}
+.item:has(+ * + * + :hover) {
+	transform: translateZ(calc(var(--index) * 2.4)) rotateY(-30deg);
+	filter: inherit;
+}
+.item:has(+ * + * + * + :hover) {
+	transform: translateZ(calc(var(--index) * .6)) rotateY(-14deg);
+	filter: inherit;
+}
+
+.items .item:active, .items .item:focus {
+	width: 28vw;
+	transform: translateZ(calc(var(--index) * 10));
+	filter: inherit;
+	z-index: 100;
+	margin: 0 .45vw;
+}
+
+.upcoming-tournaments {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.upcoming-tournaments h1 {
+    font-size: 75px;
+    color: yellow; /* Огненный цвет, вы можете выбрать другой цвет по вашему вкусу */
+    margin-bottom: 200px;
+    display: inline-block; /* Необходимо для анимации */
+    position: relative; /* Необходимо для анимации */
+    animation: fireAnimation 0.8s infinite alternate; /* Используем анимацию fireAnimation */
+}
+
+@keyframes fireAnimation {
+    to {
+        color: black;
+        text-shadow: 0 0 10px blueviolet, 0 0 20px blueviolet, 0 0 30px blueviolet; /* Добавляем тени для эффекта пламени */
+    }
+}
+
+
+
+.tournament-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.tournament {
+    width: 380px;
+}
+.tournamentdream {
+    width: 500px;
+	margin-top: 100px;
+}
+
+.tournament-image {
+    width: 350px; /* Укажите необходимую ширину для ваших изображений */
+    height: auto;
+    display: block;
+    margin: 35px auto -200px;
+    animation: fireAnimation 0.8s infinite alternate; /* Используем анимацию fireAnimation */
+}
+.tournament-image1 {
+    display: block;
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+    max-width: 100%;
+    animation: fireAnimation 0.8s infinite alternate; /* Используем анимацию fireAnimation */
+	
+}
+
+@keyframes fireAnimation {
+    to {
+        filter: brightness(1.5) drop-shadow(0 0 10px black); /* Применяем эффект яркости и тени для создания вида пламени */
+    }
+}
+
+.tournament-name {
+	font-size: 25px;
+	font-family: 'TrajanPro';
+    color: orange;
+    margin-top: 5px;
+	animation: fireAnimation 0.8s infinite alternate;
+}
+.teams {
+    text-align: center;
+    margin-top: 20px;
+}
+.teams h1{
+	margin-top: 350px;
+    font-size: 75px;
+    color: red; /* Огненный цвет, вы можете выбрать другой цвет по вашему вкусу */
+    margin-bottom: 200px;
+    display: inline-block; /* Необходимо для анимации */
+    position: relative; /* Необходимо для анимации */
+    animation: fireAnimation 0.8s infinite alternate; /* Используем анимацию fireAnimation */
+}
+.teams-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+.teamspirit {
+	width: 200px;
+}
+.betboom {
+	width: 230px;
+	margin-top: 100px;
+}
+.gg {
+	width: 200px;
+}
+.pandas {
+	width: 200px;
+	margin-top: 60px;
+}
+.liquid {
+	width: 200px;
+	margin-top: 50px;
+}
+.virtuspro {
+	width: 200px;
+	margin-top: 60px;
+}
+.talon {
+	width: 250px;
+	margin-top: 75px;
+}
+.lgd {
+	width: 200px;
+	margin-top: 60px;
+}
+.team-image1{
+	display: block;
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+    max-width: 100%;
+    animation: fireAnimation 0.8s infinite alternate; /* Используем анимацию fireAnimation */
+}
+
+.player-image{
+	width: 140px;
+}
+.player-image2{
+	margin-bottom: 35px;
+	width: 140px;
+}

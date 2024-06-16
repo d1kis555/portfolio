@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+
+    <div class="details-container">
+        <div class="details-header">
+            <img src="img/photos/ESL_kuala.png" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption">
+                На момент последнего обновления моих данных в январе 2022 года, информации о турнире ESL One Kuala Lumpur 2023 у меня нет. Тем не менее, я могу предоставить общую информацию о серии турниров ESL One и о том, что можно ожидать от подобных мероприятий.
+                
+                ESL One - это серия масштабных турниров по игре Dota 2, организованных Electronic Sports League (ESL). Эти события обычно привлекают внимание лучших мировых команд и поклонников Dota 2. Каждый турнир ESL One включает в себя квалификационные этапы, на которых команды сражаются за право участвовать в основном турнире.
+                
+                ESL One Kuala Lumpur 2023 пройдет в Куала-Лумпуре, Малайзия. Турниры ESL One обычно отличаются высоким уровнем профессионализма, красочными шоу-программами, обширной трансляцией и значительными призовыми фондами. Команды будут соревноваться в интенсивных матчах, привлекая внимание фанатов со всего мира.</div>
+                <div id="detailCaption">Призовой фонд: $1,000,000 USD</div>
+                <div id="detailCaption">Дата начала: 2023-12-11</div>
+                <div id="detailCaption">Дата конца: 2023-12-17</div>
+                <div id="detailCaption">Команд: 12</div>
+                <a href=https://liquipedia.net/dota2/ESL_One/Kuala_Lumpur/2023>Турнир на Liqupedia</a> 
+            <a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a>
+        </div>
+    </div>
+</body>
+</html>

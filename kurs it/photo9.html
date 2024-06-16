@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo 1 Details</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/details.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Проверяем, поддерживает ли браузер localStorage
+            if (typeof (Storage) !== "undefined") {
+                // Получаем видео элемент
+                var video = document.querySelector('.video-background');
+    
+                // Проверяем, есть ли сохраненное время воспроизведения
+                var savedTime = localStorage.getItem("videoPlaybackTime");
+    
+                if (savedTime) {
+                    // Восстанавливаем время воспроизведения
+                    video.currentTime = parseFloat(savedTime);
+                }
+    
+                // Слушаем событие ухода со страницы
+                window.addEventListener("beforeunload", function () {
+                    // Сохраняем текущее время воспроизведения
+                    localStorage.setItem("videoPlaybackTime", video.currentTime.toString());
+                });
+            }
+    
+            var body = $("body");
+            body.fadeIn(200);
+    
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(200);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href") + "?time=" + Math.floor(document.querySelector('.video-background').currentTime);
+                }, 200);
+            });
+        
+        $("#back-to-home").on("click", function(e) {
+                e.preventDefault();
+                $("body").fadeOut(400);
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <video loop muted autoplay class="video-background" preload="none">
+        <source src="css/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="details-container">
+        <div class="details-header">
+            <h1>EARTSHAKER</h1>
+            <img src="img/photos/9.jpg" id="detailImage" class="main-image">
+        </div>
+        <div class="details-content">
+            <div id="detailCaption"><a href=https://www.dota2.com/hero/earthshaker>Earthshaker</a> (на сленге шейкер, земляной вертила)
+                — герой поддержки, инициатор, предпочитающий сложную линию. Может быть как четвертой, так и третьей позицией, 
+                поскольку большее количество опыта и золота позволяют герою быстрее раскрыть весь свой потенциал. 
+                Способность Fissure создает перед Earthshaker непроходимую стену, что может быть полезно 
+                при нападении на противников из леса, закрывая и ограничивая их передвижение. Однако не стоит забывать, 
+                что Fissure также может навредить союзникам, и нужно быть предельно осторожным. Вторая способность 
+                героя — Enchant Totem — заряжает тотем на спине Earthshaker, значительно усиливающий его 
+                следующую атаку на короткий промежуток времени. Может быть улучшена с помощью Aghanim's 
+                Scepter, позволяя применять умение героя прыжком в указанную точку. Пассивная способность Aftershock 
+                при использовании любого из заклинаний Earthshaker наносит урон и оглушает всех врагов неподалеку, 
+                что отлично сочетается со способностью Enchant Totem, оглушая героя при применении и не давая 
+                возможности избежать урона. Поскольку оглушение наносится после удара тотема о землю, а не мгновенно, 
+                при покупке Aghanim's Scepter Earthshaker оглушает все цели в небольшой области вокруг 
+                своего приземления. Ультимативная способность Earthshaker — Echo Slam — наносит урон вокруг героя, 
+                зависящий от количества целей в области применения. Чем больше героев и юнитов находится в радиусе 
+                Echo Slam, тем больше урона каждый из них получит. Хорошо работает против героев-иллюзионистов и персонажей, 
+                способных призывать больше количество существ. Earthshaker лучше всего раскрывает свой потенциал с такими
+                предметами инициации, как Blink Dagger, Force Staff и Shadow Blade.
+                <a href="#" id="back-to-home" class="return-button">Вернуться на главный экран</a>
+            </div>
+          
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
