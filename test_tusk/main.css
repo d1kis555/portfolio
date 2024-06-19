@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 2rem;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding: 0 50px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.project1 {
+    background: url(/img/project-1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project2 {
+    background: url(/img/project-2.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project3 {
+    background: url(/img/project-3.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project4 {
+    background: url(/img/project-4.jpg) no-repeat center center;
+    background-size: cover;
+    font-size: 2.1rem;
+}
+
+.project5 {
+    background: url(/img/project-5.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project6 {
+    background: url(/img/project-6.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project7 {
+    background: url(/img/project-7.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.project::after {
+    content: '';
+    display: block;
+    padding-bottom: 56.25%;
+}
+
+.project-standard {
+    grid-column: span 1;
+}
+
+.project-large {
+    grid-column: span 2;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 48px;
+    height: 48px;
+}
+
+.contact-info {
+    text-align: right;
+}
+
+@media (max-width: 1100px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .project-large {
+        grid-column: span 1;
+        /* Убедитесь, что все проекты имеют одинаковый размер */
+    }
+}
+
+@media (max-width: 680px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a {
+        padding: 10px 0;
+    }
+    .contact-info {
+        text-align: center;
+    }
+}
+
+.logo {
+    padding: 5px 0;
+}
