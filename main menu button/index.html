@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@codewith_muhilan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+
+
+
+</head>
+
+<body>
+
+    <div class="navigation">
+        <ul>
+            <li class="list active">
+                <a href="#">
+                    <span class="icon">
+                        
+                        <ion-icon name="home"></ion-icon>
+                    </span>
+                    <span class="text">Home</span>
+                    <span class="circle"></span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <span class="text">Profile</span>
+                    <span class="circle"></span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <!-- <ion-icon name="chatbubble-outline"></ion-icon> -->
+                        <ion-icon name="chatbubble"></ion-icon>
+
+                    </span>
+                    <span class="text">Message</span>
+                    <span class="circle"></span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <!-- <ion-icon name="camera-outline"></ion-icon> -->
+                        <ion-icon name="camera"></ion-icon>
+                    </span>
+                    <span class="text">Photos</span>
+                    <span class="circle"></span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <!-- <ion-icon name="settings-outline"></ion-icon> -->
+                        <ion-icon name="settings"></ion-icon>
+                    </span>
+                    <span class="text">Settings</span>
+                    <span class="circle"></span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
+    <!--Social Liks codings below-->
+    <a id="source-link" class="meta-link" href="https://t.me/codewith_muhilan" target="_blank">
+        <i class="fas fa-link"></i>
+        <span class="roboto-mono">Join my Telegram</span>
+    </a>
+
+    <a id="yt-link" class="meta-link" href="https://www.youtube.com/@codewith_muhilan?sub_confirmation=1" target="_blank">
+        <i class="fab fa-youtube"></i>
+        <span> Subscribe my channel</span>
+    </a>
+
+    <a id="Fund-link" class="meta-link" href="https://www.buymeacoffee.com/codewithmuhilan" target="_blank">
+        <i class="fas fa-dollar-sign"></i>
+        <span> Show your Support..❤</span>
+    </a>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const list = document.querySelectorAll('.list');
+
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+    </script>
+</body>
+
+</html>
